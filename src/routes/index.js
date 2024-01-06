@@ -1,7 +1,7 @@
-import ExampleRoute from './ExampleRoute';
+import UserRoute from './UserRoute';
 
 const routes = [
-  ExampleRoute,
+  UserRoute,
 ];
 
 export default routes;
