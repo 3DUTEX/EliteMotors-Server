@@ -62,6 +62,8 @@ User.init(
 
 // Criando hash da senha antes de salvar no BD
 User.beforeSave(async (user) => {
-  const passwordHash = await hash(user.password, 8);
-  user.password_hash = passwordHash;
+  if (user.password.length > 1) {
+    const passwordHash = await hash(user.password, 8);
+    user.password_hash = passwordHash;
+  }
 });

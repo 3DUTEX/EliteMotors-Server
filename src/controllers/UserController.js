@@ -11,6 +11,8 @@ function error400(res, type, message) {
 
 export const create = async (req, res) => {
   try {
+    if (req.body.email && !req.body.password) return error400(res, 'Bad request', 'Password is required');
+
     const {
       id, name, email, isGoogleAccount,
     } = await User.create(req.body);
@@ -31,10 +33,6 @@ export const create = async (req, res) => {
       return error400(res, error.type, error.message);
     }
 
-    const error = {
-      type: 'Unexpected error',
-      message: 'Please contact developer of system',
-    };
-    return error400(res, error.type, error.message);
+    return error400(res, 'Unexpected error', 'Please contact developer of system');
   }
 };
