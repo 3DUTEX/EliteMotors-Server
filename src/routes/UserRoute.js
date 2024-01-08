@@ -9,9 +9,12 @@ const router = new Router();
 router.post('/users', UserController.create);
 
 // GET : Get one user
-router.get('/users/myUser', authMiddleware, UserController.show);
+router.get('/users', authMiddleware, UserController.show);
 
 // PUT : Update one user
 router.put('/users', authMiddleware, UserController.update);
+
+// DELETE : Delete one user
+router.delete('/users', authMiddleware, UserController.deleteUser);
 
 export default router;

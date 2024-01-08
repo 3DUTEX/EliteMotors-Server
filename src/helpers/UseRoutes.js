@@ -12,11 +12,11 @@ export default class UseRoutes {
    * @returns void
    */
   use(routes) {
-    if (!this.app) { return Error('A instância do express (app) é obrigatória'); }
+    if (!this.app) { throw Error('A instância do express (app) é obrigatória'); }
 
-    if (!Array.isArray(routes)) { return Error('Routes precisa ser um array'); }
+    if (!Array.isArray(routes)) { throw TypeError('Routes precisa ser um array'); }
 
-    if (routes.length < 1) { return Error('Array de rotas não pode estar vazio'); }
+    if (routes.length < 1) { throw Error('Array de rotas não pode estar vazio'); }
 
     // eslint-disable-next-line no-restricted-syntax
     for (const route of routes) {

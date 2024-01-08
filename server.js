@@ -16,6 +16,4 @@ app.use(express.json()); // Configurando json no express
 const useRoutes = new UseRoutes(app);
 useRoutes.use(routes);
 
-app.get('/', (req, res) => res.send('hello world!'));
-
 export default app;

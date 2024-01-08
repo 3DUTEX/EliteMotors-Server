@@ -81,7 +81,20 @@ export const update = async (req, res) => {
       id, name, email, level_access,
     });
   } catch (e) {
-    console.log(e);
+    return errorCatch(res, e);
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  try {
+    if (!req.userId) return error400(res, 'Invalid ID', 'ID not receveid');
+
+    const user = await User.findByPk(req.userId);
+
+    await user.destroy();
+
+    return res.status(204).json();
+  } catch (e) {
     return errorCatch(res, e);
   }
 };
