@@ -11,23 +11,46 @@ export default class Vehicle extends Model {
 Vehicle.init(
   {
     name: {
+      type: DataTypes.TEXT,
+      defaultValue: '',
+      validate: {
+        len: {
+          args: [3, 40],
+          msg: 'The name must contain between 3 and 40 characters',
+        },
+      },
     },
     brand: {
+      type: DataTypes.TEXT,
+      defaultValue: '',
+      validate: {
+        len: {
+          args: [3, 40],
+          msg: 'The name must contain between 3 and 40 characters',
+        },
+      },
     },
     model: {
+      type: DataTypes.TEXT,
+      defaultValue: '',
+      validate: {
+        len: {
+          args: [3, 40],
+          msg: 'The name must contain between 3 and 40 characters',
+        },
+      },
     },
     price: {
-      type: Sequelize.FLOAT,
+      type: DataTypes.FLOAT,
+      defaultValue: 0,
     },
     qtd_stock: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
     },
     idUser: {
-      type: Sequelize.INTEGER,
-      references: {
-        model: 'Users',
-        key: 'id',
-      },
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
     },
   },
   {
