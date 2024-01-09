@@ -11,15 +11,15 @@ module.exports = {
           autoIncrement: true,
         },
         name: {
-          type: Sequelize.STRING,
+          type: Sequelize.TEXT,
           allowNull: false,
         },
         brand: {
-          type: Sequelize.STRING,
+          type: Sequelize.TEXT,
           allowNull: false,
         },
         model: {
-          type: Sequelize.STRING,
+          type: Sequelize.TEXT,
           allowNull: false,
         },
         price: {
