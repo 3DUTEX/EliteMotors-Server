@@ -21,6 +21,17 @@ function errorCatch(res, e) {
   return error400(res, 'Unexpected error', 'Please contact developer of system');
 }
 
+// Somente admin
+export const index = async (req, res) => {
+  try {
+    const users = await User.findAll();
+
+    return res.status(200).json(users);
+  } catch (e) {
+    return errorCatch(res, e);
+  }
+};
+
 export const create = async (req, res) => {
   try {
     if (req.body.email && !req.body.password) return error400(res, 'Bad request', 'Password is required');
