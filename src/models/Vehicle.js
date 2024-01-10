@@ -26,7 +26,7 @@ Vehicle.init(
       validate: {
         len: {
           args: [3, 40],
-          msg: 'The name must contain between 3 and 40 characters',
+          msg: 'The brand must contain between 3 and 40 characters',
         },
       },
     },
@@ -36,7 +36,7 @@ Vehicle.init(
       validate: {
         len: {
           args: [3, 40],
-          msg: 'The name must contain between 3 and 40 characters',
+          msg: 'The model must contain between 3 and 40 characters',
         },
       },
     },
