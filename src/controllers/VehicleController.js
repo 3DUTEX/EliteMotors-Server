@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import Vehicle from '../models/Vehicle';
+import User from '../models/User';
 import { error400, errorCatch } from './errors/error400';
 
 export const create = async (req, res) => {
@@ -15,18 +16,24 @@ export const create = async (req, res) => {
       id, name, brand, model, price, qtd_Stock,
     });
   } catch (e) {
-    console.log(e);
     return errorCatch(res, e);
   }
 };
 
 export const index = async (req, res) => {
   try {
-    const vehicles = await Vehicle.findAll();
+    const vehicles = await Vehicle.findAll({
+      attributes: ['id', 'name', 'brand', 'model', 'price', 'qtd_stock'],
+      order: [['id', 'DESC']], // Ordem de adição
+      include: {
+        model: User,
+        as: 'createdBy',
+        attributes: ['id', 'name', 'email'],
+      },
+    });
 
     return res.status(200).json(vehicles);
   } catch (e) {
-    console.log(e);
     return errorCatch(res, e);
   }
 };

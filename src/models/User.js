@@ -2,6 +2,7 @@ import { Sequelize, Model, DataTypes } from 'sequelize';
 import { hash } from 'bcryptjs';
 
 import config from '../config/database';
+import Vehicle from './Vehicle';
 
 const sequelize = new Sequelize(config); // Conexão
 
@@ -65,4 +66,9 @@ User.beforeSave(async (user) => {
   if (!user.password) return;
   const passwordHash = await hash(user.password, 8);
   user.password_hash = passwordHash;
+});
+
+Vehicle.belongsTo(User, {
+  foreignKey: 'idUser',
+  as: 'createdBy',
 });
