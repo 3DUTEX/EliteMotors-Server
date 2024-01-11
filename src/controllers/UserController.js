@@ -38,13 +38,11 @@ export const show = async (req, res) => {
   try {
     if (!req.userId) return error400(res, 'Invalid ID', 'ID not receveid');
 
-    const {
-      id, name, email, isGoogleAccount, level_access,
-    } = await User.findByPk(req.userId);
-
-    return res.status(200).json({
-      id, name, email, isGoogleAccount, level_access,
+    const user = await User.findByPk(req.userId, {
+      attributes: ['id', 'name', 'email', 'isGoogleAccount', 'level_access'],
     });
+
+    return res.status(200).json(user);
   } catch (e) {
     return errorCatch(res, e);
   }

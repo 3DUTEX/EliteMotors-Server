@@ -43,14 +43,29 @@ Vehicle.init(
     price: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
+      validate: {
+        isFloat: {
+          msg: 'price should a float type',
+        },
+      },
     },
     qtd_stock: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
+      validate: {
+        isInt: {
+          msg: 'stock quantity should a int type',
+        },
+      },
     },
     idUser: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
+      validate: {
+        isInt: {
+          msg: 'idUser should a int type',
+        },
+      },
     },
   },
   {
