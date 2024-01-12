@@ -46,5 +46,5 @@ Image.init(
 );
 
 Image.belongsTo(Vehicle, {
-  foreignKey: 'id',
+  foreignKey: 'vehicleID',
 });

@@ -8,6 +8,6 @@ const upload = multer({ storage });
 const router = new Router();
 
 // POST : Create image/URL
-router.post('/vehicles/images', upload.single('image'), imageController.create);
+router.post('/vehicles/images/:vehicleID', upload.single('image'), imageController.create);
 
 export default router;
