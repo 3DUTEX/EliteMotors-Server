@@ -22,6 +22,10 @@ module.exports = {
         vehicleID: {
           type: Sequelize.INTEGER,
           allowNull: false,
+          references: {
+            model: 'Vehicles',
+            key: 'id',
+          },
         },
       },
     );
