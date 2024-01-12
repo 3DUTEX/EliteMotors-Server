@@ -57,3 +57,20 @@ export const update = async (req, res) => {
     return errorCatch(res, e);
   }
 };
+
+export const deleteImage = async (req, res) => {
+  try {
+    const { storageID } = req.params;
+
+    // Upload Image
+    await supabase.storage.from(BUCKET).remove(`cars/${storageID}`);
+
+    const image = await Image.findOne({ where: { storageID } });
+
+    image.destroy();
+
+    res.status(204).json();
+  } catch (e) {
+    return errorCatch(res, e);
+  }
+};
