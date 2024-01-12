@@ -11,12 +11,12 @@ module.exports = {
           autoIncrement: true,
         },
         storageID: {
-          type: Sequelize.STRING,
+          type: Sequelize.TEXT,
           allowNull: false,
           unique: true,
         },
         url: {
-          type: Sequelize.STRING,
+          type: Sequelize.TEXT,
           allowNull: false,
         },
         vehicleID: {

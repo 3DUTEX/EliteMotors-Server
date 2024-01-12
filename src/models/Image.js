@@ -12,17 +12,16 @@ export default class Image extends Model {
 Image.init(
   {
     storageID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       defaultValue: '',
       validate: {
-        min: {
-          args: 0,
+        notEmpty: {
           msg: 'storageID cannot be empty',
         },
       },
     },
     url: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       defaultValue: '',
       validate: {
         min: {
@@ -41,7 +40,7 @@ Image.init(
   },
   {
     sequelize,
-    tableName: 'Vehicles',
+    tableName: 'Images',
     timestamps: false, // Remove os campos createdAt/updatedAt inclusos por padrão
   },
 );
