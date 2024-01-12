@@ -52,7 +52,7 @@ export const update = async (req, res) => {
 
     const imageUpdated = await image.update({ url: data.signedUrl });
 
-    res.status(200).json(imageUpdated);
+    return res.status(200).json(imageUpdated);
   } catch (e) {
     return errorCatch(res, e);
   }
@@ -69,7 +69,7 @@ export const deleteImage = async (req, res) => {
 
     image.destroy();
 
-    res.status(204).json();
+    return res.status(204).json();
   } catch (e) {
     return errorCatch(res, e);
   }

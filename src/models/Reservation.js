@@ -38,9 +38,6 @@ Reservation.init(
         notEmpty: {
           msg: 'visitDate cannot be empty',
         },
-        isDate: {
-          msg: 'visitDate must be type date',
-        },
       },
     },
     createdBy: {
@@ -48,9 +45,6 @@ Reservation.init(
       validate: {
         notEmpty: {
           msg: 'visitDate cannot be empty',
-        },
-        isDate: {
-          msg: 'visitDate must be type date',
         },
       },
     },
