@@ -9,14 +9,14 @@ const queryConfig = {
   order: [['id', 'DESC']], // Ordem de adição
   include: [
     {
-      model: User,
-      as: 'createdBy',
-      attributes: ['id', 'name', 'email'],
-    },
-    {
       model: Image,
       as: 'images',
       attributes: ['id', 'storageID', 'url'],
+    },
+    {
+      model: User,
+      as: 'createdBy',
+      attributes: ['id', 'name', 'email'],
     },
   ],
 };

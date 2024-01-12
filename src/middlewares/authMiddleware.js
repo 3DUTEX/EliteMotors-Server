@@ -39,7 +39,6 @@ export default async (req, res, next) => {
     req.userId = id;
     req.userEmail = email;
   } catch (e) {
-    console.log(e);
     return res.status(400).json({
       error: {
         type: 'Unexpected error',

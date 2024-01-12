@@ -11,7 +11,7 @@ export const create = async (req, res) => {
     const { file } = req; // File from request (multer)
     const { mimetype } = file; // Image Type
 
-    const expiresIn = 7776000;
+    const expiresIn = 7776000; // 3 mounth duration
     const numberID = randomNumber(); // Name of image
 
     // Upload Image
@@ -30,7 +30,30 @@ export const create = async (req, res) => {
 
     return res.status(201).json(response);
   } catch (e) {
-    console.log(e);
+    return errorCatch(res, e);
+  }
+};
+
+export const update = async (req, res) => {
+  try {
+    const { storageID } = req.params;
+    const { file } = req; // File from request (multer)
+    const { mimetype } = file; // Image Type
+
+    const expiresIn = 7776000; // 3 mounth duration
+
+    // Upload Image
+    await supabase.storage.from(BUCKET).update(`cars/${storageID}`, file.buffer, { contentType: mimetype });
+
+    // Generate URL
+    const { data } = await supabase.storage.from(BUCKET).createSignedUrl(`cars/${storageID}`, expiresIn);
+
+    const image = await Image.findOne({ where: { storageID } });
+
+    const imageUpdated = await image.update({ url: data.signedUrl });
+
+    res.status(200).json(imageUpdated);
+  } catch (e) {
     return errorCatch(res, e);
   }
 };

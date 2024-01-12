@@ -22,6 +22,7 @@ export default async function (req, res, next) {
 
     return next(); // next middleware
   } catch (e) {
+    console.log(e);
     return res.status(400).json({
       error: {
         type: 'Unexpected error',
