@@ -1,6 +1,7 @@
 import { Sequelize, Model, DataTypes } from 'sequelize';
 
 import config from '../config/database';
+import Image from './Image';
 
 const sequelize = new Sequelize(config); // Conexão
 
@@ -74,3 +75,8 @@ Vehicle.init(
     timestamps: false, // Remove os campos createdAt/updatedAt inclusos por padrão
   },
 );
+
+Vehicle.hasMany(Image, {
+  foreignKey: 'vehicleID',
+  as: 'images',
+});

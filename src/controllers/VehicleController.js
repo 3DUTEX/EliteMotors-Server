@@ -1,16 +1,24 @@
 /* eslint-disable camelcase */
 import Vehicle from '../models/Vehicle';
 import User from '../models/User';
+import Image from '../models/Image';
 import { error400, errorCatch } from './errors/error400';
 
 const queryConfig = {
   attributes: ['id', 'name', 'brand', 'model', 'price', 'qtd_stock'],
   order: [['id', 'DESC']], // Ordem de adição
-  include: {
-    model: User,
-    as: 'createdBy',
-    attributes: ['id', 'name', 'email'],
-  },
+  include: [
+    {
+      model: User,
+      as: 'createdBy',
+      attributes: ['id', 'name', 'email'],
+    },
+    {
+      model: Image,
+      as: 'images',
+      attributes: ['id', 'storageID', 'url'],
+    },
+  ],
 };
 
 async function findVehicle(req) {
