@@ -14,4 +14,6 @@ router.post('/vehicles', authMiddleware, isAdmin, VehicleController.create);
 
 router.put('/vehicles/:id', authMiddleware, isAdmin, VehicleController.update);
 
+router.delete('/vehicles/:id', authMiddleware, isAdmin, VehicleController.deleteVehicle);
+
 export default router;

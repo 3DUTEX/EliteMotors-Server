@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 export function error400(res, type, message) {
   return res.status(400).json({
     error: {

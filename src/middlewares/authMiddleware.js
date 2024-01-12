@@ -1,17 +1,25 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/User';
 
+function error401(res, type, message) {
+  return res.status(401).json({
+    error: {
+      type,
+      message,
+    },
+  });
+}
+
 export default async (req, res, next) => {
   const { authorization } = req.headers; // Pegando o header 'authorization'
 
   // Caso não tenha esse header
   if (!authorization) {
-    return res.status(401).json({
-      error: {
-        type: 'Unauthorized',
-        message: 'Login required',
-      },
-    });
+    return error401(res, 'Unauthorized', 'Login Required');
+  }
+
+  if (!authorization.includes('Bearer')) {
+    return error401(res, 'bad request', 'format token invalid');
   }
 
   const [, token] = authorization.split(' ');
@@ -25,17 +33,13 @@ export default async (req, res, next) => {
     const user = await User.findOne({ where: { id, email } });
 
     if (!user) {
-      return res.status(401).json({
-        error: {
-          type: 'Unauthorized',
-          message: 'Token expired or invalid',
-        },
-      });
+      return error401(res, 'Unauthorized', 'Token expired or invalid');
     }
 
     req.userId = id;
     req.userEmail = email;
   } catch (e) {
+    console.log(e);
     return res.status(400).json({
       error: {
         type: 'Unexpected error',

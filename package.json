@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "test:single": "jest ./src/tests/vehicleRoute.test.js"
   },
   "keywords": [],
   "author": "",
