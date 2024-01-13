@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 // Import modules
-import UseRoutes from './helpers/useRoutes';
+import UseRoutes from './helpers/UseRoutes';
 import routes from './routes';
 
 dotenv.config();
