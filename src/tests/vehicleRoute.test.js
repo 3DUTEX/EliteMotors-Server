@@ -22,7 +22,7 @@ it('should create a vehicle', async () => {
   expect(res.body).toHaveProperty('id');
 });
 
-it('should index all vehicles', async () => {
+it('should show all vehicles', async () => {
   const res = await request(app).get('/vehicles');
 
   expect(res.statusCode).toEqual(200);

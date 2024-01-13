@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "dev": "nodemon index.js",
-    "test:single": "jest ./src/tests/vehicleRoute.test.js"
+    "test:single": "jest ./src/tests/reservationsRoute.test.js"
   },
   "keywords": [],
   "author": "",
