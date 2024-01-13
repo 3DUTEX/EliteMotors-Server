@@ -1,7 +1,7 @@
 import { it, expect } from '@jest/globals';
 import request from 'supertest';
 
-import app from '../../server';
+import app from '../server';
 
 let token;
 

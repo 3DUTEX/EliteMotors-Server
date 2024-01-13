@@ -5,8 +5,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 
 // Import modules
-import UseRoutes from './src/helpers/useRoutes';
-import routes from './src/routes';
+import UseRoutes from './helpers/useRoutes';
+import routes from './routes';
 
 dotenv.config();
 const app = express();

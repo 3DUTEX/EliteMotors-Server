@@ -1,7 +1,7 @@
 import { it, expect } from '@jest/globals';
 import request from 'supertest';
 
-import app from '../../server';
+import app from '../server';
 
 const tokenAdmin = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsImVtYWlsIjoiYWRtaW5AZW1haWwuY28iLCJpYXQiOjE3MDQ4Mjg4ODcsImV4cCI6MTcwNTQzMzY4N30.7PpoBpqppyDG96oPfxma3BbLJpXTf-A7cfVd_F0qn5I';
 
