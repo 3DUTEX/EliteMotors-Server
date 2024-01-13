@@ -1,6 +1,7 @@
 import { Sequelize, Model, DataTypes } from 'sequelize';
 import { hash } from 'bcryptjs';
 
+import Reservation from './Reservation';
 import config from '../config/database';
 import Vehicle from './Vehicle';
 
@@ -71,4 +72,8 @@ User.beforeSave(async (user) => {
 Vehicle.belongsTo(User, {
   foreignKey: 'idUser',
   as: 'createdBy',
+});
+
+User.hasMany(Reservation, {
+  foreignKey: 'userID',
 });
