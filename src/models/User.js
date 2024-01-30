@@ -54,6 +54,9 @@ User.init(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    googleID: {
+      type: DataTypes.TEXT,
+    },
   },
   {
     sequelize,
