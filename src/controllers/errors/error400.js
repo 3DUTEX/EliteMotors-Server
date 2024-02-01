@@ -10,6 +10,7 @@ export function error400(res, type, message) {
 }
 
 export function errorCatch(res, e) {
+  console.log(e);
   if (e.errors) {
     const { errors } = e;
     // Se for um array pega apenas o indíce 0
