@@ -1,6 +1,7 @@
 import { Sequelize, Model, DataTypes } from 'sequelize';
 
 import config from '../config/database';
+import Vehicle from './Vehicle';
 
 const sequelize = new Sequelize(config); // Conexão
 
@@ -55,3 +56,7 @@ Reservation.init(
     timestamps: false, // Remove os campos createdAt/updatedAt inclusos por padrão
   },
 );
+
+Reservation.belongsTo(Vehicle, {
+  foreignKey: 'vehicleID',
+});

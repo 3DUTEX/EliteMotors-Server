@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { TokenExpiredError } from 'jsonwebtoken';
 import User from '../models/User';
 
 function error401(res, type, message) {
@@ -39,10 +39,22 @@ export default async (req, res, next) => {
     req.userId = id;
     req.userEmail = email;
   } catch (e) {
+    console.log(e);
+    let type = 'Unexpected error';
+    let message = 'Please contact developer of system';
+
+    // Se o token expirar
+    if (e instanceof TokenExpiredError) {
+      type = 'Token expirado';
+      message = 'Por favor, logue novamente!';
+    }
+
+    console.log(authorization);
+
     return res.status(400).json({
       error: {
-        type: 'Unexpected error',
-        message: 'Please contact developer of system',
+        type,
+        message,
       },
     });
   }

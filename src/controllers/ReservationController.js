@@ -1,4 +1,5 @@
 import Reservation from '../models/Reservation';
+import Vehicle from '../models/Vehicle';
 import { error400, errorCatch } from './errors/error400';
 
 function createError(type, message) {
@@ -50,7 +51,17 @@ export const show = async (req, res) => {
 
 export const index = async (req, res) => {
   try {
-    const reservations = await Reservation.findAll({ where: { userID: req.userId } });
+    const reservations = await Reservation.findAll({
+      where: { userID: req.userId },
+      include: [
+        {
+          model: Vehicle,
+          as: 'Vehicle',
+          attributes: ['name', 'brand', 'model', 'price'],
+        },
+      ],
+    });
+
     if (!reservations) {
       return error400(res, 'bad request', 'none reservation finded');
     }
